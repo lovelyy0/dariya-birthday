@@ -923,7 +923,7 @@ const FACTS=[
  // Если у тебя другие фото, поменяй src, варианты a и правильный индекс ok.
  {q:'Смотри на этот фрагмент… В каком классе был сделан этот снимок?',photo:'memory-9.jpg',a:['В 9 классе','В 10 классе','В 11 классе','Уже в университете'],ok:1,fx:'ДААА! Это ещё школьные времена. Кажется, с этого периода и начинается ваша история ♥',reveal:'9 класс — время, когда вы уже были знакомы, но ещё только впереди было столько всего.'},
  {q:'А теперь следующий кадр. Когда мы уже начали нормально общаться?',photo:'memory-10.jpg',a:['В 9 классе','В 10 классе','В 11 классе','На первом курсе'],ok:1,fx:'Правильно! В 10 классе наше общение стало ближе 🥹',reveal:'10 класс — вот тогда и началась ваша дружба.'},
- {q:'Узнаёшь это место? Где мы гуляли?',photo:'memory-park.jpg',a:['В торговом центре','В парке Рыскулова','На набережной','Возле университета'],ok:0,fx:'Конечно! Парк Рыскулова — место ваших прогулок и разговоров обо всём.',reveal:'Парк Рыскулова. И сколько же разговоров там осталось ♥'},
+ {q:'Узнаёшь это место? Где мы гуляли?',photo:'memory-park.jpg',a:['В торговом центре','В парке Рыскулова','На набережной','Возле университета'],ok:1,fx:'Конечно! Парк Рыскулова — место ваших прогулок и разговоров обо всём.',reveal:'Парк Рыскулова. И сколько же разговоров там осталось ♥'},
  {q:'Проверка ENGENE: как называется фандом ENHYPEN?',a:['ARMY','ENGENE','BLINK','ATINY'],ok:1,fx:'Верно! Настоящая ENGENE узнаётся сразу.'},
  {q:'Через какое шоу сформировалась группа ENHYPEN?',a:['Produce 101','Boys Planet','I-LAND','Sixteen'],ok:2,fx:'Да, I-LAND. Оттуда всё и началось.'},
  {q:'Чем Сонхун занимался до дебюта?',a:['Футболом','Фигурным катанием','Плаванием','Балетом'],ok:1,fx:'Фигурное катание. Грация оттуда.'},
@@ -1311,11 +1311,20 @@ function buildSite(){
   const gh=E('div');c.appendChild(gh);giftUI(gh);
 }
 const PC_BACK=['Причина №1: с тобой всегда есть о чём поговорить и куда пойти пешком','Причина №2: с тобой даже обычная прогулка превращается в приключение','Причина №3: ты появилась именно тогда, когда была нужна'];
-function photocards(host){const w=E('div','pcs');
- ['b6ba58df1432c3db3919b5afcd348bc6.jpg','7397b7ecfbbe04b8146deb1658cab915.jpg','e9d80d45871b288a980a6f8edf120d3b.jpg'].forEach((src,i)=>{const c=E('div','pcard','<img alt=""><div class="pb"></div><i>EN-</i>');
-    const im=c.querySelector('img');im.onerror=()=>{c.style.display='none'};im.src=src;c.querySelector('.pb').textContent=PC_BACK[i];
-    c.onclick=()=>{c.classList.toggle('fl');tone(700,.08)};w.appendChild(c)});
-  host.appendChild(w);host.appendChild(E('p','tip','Нажми на карточки Сонхуна: на обороте кое-что написано ♥'))}
+function photocards(host){
+  const w=E('div','pcs');
+  ['b6ba58df1432c3db3919b5afcd348bc6.jpg','7397b7ecfbbe04b8146deb1658cab915.jpg','e9d80d45871b288a980a6f8edf120d3b.jpg'].forEach((src,i)=>{
+    const c=E('div','pcard','<img alt=""><div class="pb"></div><i>EN-</i>');
+    const im=c.querySelector('img');
+    im.onerror=()=>{c.style.display='none'};
+    im.src=src;
+    c.querySelector('.pb').textContent=PC_BACK[i];
+    c.onclick=()=>{c.classList.toggle('fl');tone(700,.08)};
+    w.appendChild(c)
+  });
+  host.appendChild(w);
+  host.appendChild(E('p','tip','Нажми на карточки Сонхуна: на обороте кое-что написано ♥'))
+}
 function showCards(){const h=$('pcHost');if(h.dataset.b)return;h.dataset.b='1';h.style.display='block';photocards(h)}
 const BIRTH='2006-10-28',nf=n=>Math.round(n).toLocaleString('ru-RU');
 function counterHTML(){return '<p style="font-size:1.05rem">Столько ты уже живёшь на свете. Цифры идут в реальном времени.</p><div class="big20">20</div><div class="stats"><div class="stat"><b data-c="D">0</b><span>дней</span></div><div class="stat"><b data-c="W">0</b><span>недель</span></div><div class="stat"><b data-c="H">0</b><span>часов</span></div><div class="stat"><b data-c="M">0</b><span>минут</span></div><div class="stat"><b data-c="S">0</b><span>секунд</span></div><div class="stat"><b data-c="B">0</b><span>ударов сердца (≈70 в минуту)</span></div></div>'}
