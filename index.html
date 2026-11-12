@@ -1312,7 +1312,7 @@ function buildSite(){
 }
 const PC_BACK=['Причина №1: с тобой всегда есть о чём поговорить и куда пойти пешком','Причина №2: с тобой даже обычная прогулка превращается в приключение','Причина №3: ты появилась именно тогда, когда была нужна'];
 function photocards(host){const w=E('div','pcs');
-  ['sunghoon1.png','sunghoon2.png','sunghoon_thumb.png'].forEach((src,i)=>{const c=E('div','pcard','<img alt=""><div class="pb"></div><i>EN-</i>');
+  ['b6ba58df1432c3db3919b5afcd348bc6.jpg,'7397b7ecfbbe04b8146deb1658cab915.jpg','e9d80d45871b288a980a6f8edf120d3b.jpg'].forEach((src,i)=>{const c=E('div','pcard','<img alt=""><div class="pb"></div><i>EN-</i>');
     const im=c.querySelector('img');im.onerror=()=>{c.style.display='none'};im.src=src;c.querySelector('.pb').textContent=PC_BACK[i];
     c.onclick=()=>{c.classList.toggle('fl');tone(700,.08)};w.appendChild(c)});
   host.appendChild(w);host.appendChild(E('p','tip','Нажми на карточки Сонхуна: на обороте кое-что написано ♥'))}
